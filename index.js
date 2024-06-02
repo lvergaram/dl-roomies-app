@@ -17,5 +17,9 @@ app.get('/', (req, res) => {
   res.sendFile(__dirname + '/src/views/index.html')
 })
 
+app.get('/*', (req, res) => {
+  res.status(404).json({ok:false, message:'url no existe'})
+})
+
 const PORT = process.env.PORT ?? 3000
 app.listen(PORT, () => `listening on PORT ${PORT} http://localhost:${PORT}`)
